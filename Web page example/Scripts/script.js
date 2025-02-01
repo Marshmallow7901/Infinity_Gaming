@@ -13,7 +13,7 @@ addToCartButton.addEventListener("click", () => {
         quantity: productQuantity
     };
 
-    // Retrieve existing cart items from local storage
+    
     const existingCartItems = localStorage.getItem("cartItems");
     let cartItems = [];
 
@@ -21,18 +21,18 @@ addToCartButton.addEventListener("click", () => {
         cartItems = JSON.parse(existingCartItems);
     }
 
-    // Add the new product to the cart
+
     cartItems.push(product);
 
-    // Save updated cart items to local storage
+    
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-    // Calculate the total price of all items in the cart
+   
     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
-    // Optionally, save the total price to local storage if you want to persist it
+   
     localStorage.setItem("totalPrice", totalPrice.toFixed(2));
 
-    // Display an alert to the user
+
     alert(`Item added to cart! Total price: R${totalPrice.toFixed(2)}`);
 });
