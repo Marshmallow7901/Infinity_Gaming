@@ -1,0 +1,34 @@
+﻿nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: black;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: gold;
+}
+
+    a:hover {
+        color: red;
+    }
+
+ 

@@ -1,0 +1,26 @@
+﻿body {
+    background: linear-gradient(to right,  black, gold);
+    color: darkred;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.event {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.event-date {
+    font-weight: bold;
+}
+
+img {
+    width: 200px;
+    height: 150px; 
+}

@@ -1,0 +1,212 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66E24BB2-77C9-4656-AECA-ADF30588B183}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web_page_example</RootNamespace>
+    <AssemblyName>Web page example</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Contact us.html" />
+    <Content Include="Pages\Sub folder Product official page\cyberpunk.html" />
+    <Content Include="Pages\Sub folder Product official page\Dark souls.html" />
+    <Content Include="Pages\Gaming pcs.html" />
+    <Content Include="Pages\Home Page.html" />
+    <Content Include="Pages\Sub folder Product official page\Last of us.html" />
+    <Content Include="Pages\Sub folder Product official page\GTA V.html" />
+    <Content Include="Pages\Sub folder Product official page\Half Life2.html" />
+    <Content Include="Pages\Sub folder Product official page\Minecraft.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Acer Nitro V15.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Asus ROG Zephyrus.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\ASUS TUF A17 AMD.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Defender AMD Ryzen 5.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Hp omen.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Infinity Gaming.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Shadow Gaming.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Skytech Archangel.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\Specialist AMD Ryzen 5.html" />
+    <Content Include="Pages\Sub folder Product official page\PCs\TUF A15.html" />
+    <Content Include="Pages\Sub folder Product official page\Portal 2.html" />
+    <Content Include="Pages\Sub folder Product official page\Red Dead Redemption2.html" />
+    <Content Include="Pages\Sub folder Product official page\The Legend of Zelda.html" />
+    <Content Include="Pages\Sub folder Product official page\The Witcher 3Wild Hunt.html" />
+    <Content Include="Pages\Upcoming Events.html" />
+    <Content Include="pics\Customer feedback\1.png" />
+    <Content Include="pics\Customer feedback\2.png" />
+    <Content Include="pics\Customer feedback\3.png" />
+    <Content Include="pics\Customer feedback\5.png" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\activision-logo %281%29.png" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Discordlogo.jpg" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Gamers esports.jpg" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\ROG.jpg" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\twitch tv.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\cyberpunk gameplay.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\GTA V.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Legend of zelda.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Minecraft 2.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\portal 2.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\RDD2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\Acer nitro v.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\AMD Ryzen 5 v2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\AMD Ryzen 5.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus A17 v2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus Rog 2.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus ROG.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus tuf 1.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus tuf 2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\Asus tuf A17.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\Custom build.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\defender 1.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\Defender.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\hp omen 2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\HP omen.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\Nitro v2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\shadow 1.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\shadow 2.jpg" />
+    <Content Include="pics\Web Images\Pictures\PCs\skytech 2.png" />
+    <Content Include="pics\Web Images\Pictures\PCs\skytech.jpg" />
+    <Content Include="Pages\Sub folder Product official page\Skyrim.html" />
+    <Content Include="Scripts\Script file.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Styles\About us style sheet.css" />
+    <Content Include="Pages\About us.html" />
+    <Content Include="Pages\Games.html" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Background image.png" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Home page.png" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Infinity Gaming logo with background.png" />
+    <Content Include="pics\Web Images\Pictures\Background and Logo Images\Logo with no background.png" />
+    <Content Include="pics\Web Images\Pictures\Games\Black ops cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Cyberpunk cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\dark souls.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\GTA Auto V cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Half life 2 cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Half life.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\legend of zelda cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\minecraft cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\portal 2 cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\red dead redemption cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\skyrim cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\Skyrim pic 1.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\the last of us cover.jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\witcher .jpg" />
+    <Content Include="pics\Web Images\Pictures\Games\witcher 3 main pic.jpg" />
+    <Content Include="Styles\Product styles.css" />
+    <Content Include="Styles\Contact us style.css" />
+    <Content Include="Styles\Events style sheet.css" />
+    <Content Include="Styles\Home Page style.css" />
+    <Content Include="Styles\navbar style.css" />
+    <Content Include="Styles\Products page styles.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55106</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44369/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
