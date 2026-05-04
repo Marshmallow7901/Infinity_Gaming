@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamer Subscription - Infinity Gaming</title>
+    <link href="../Styles/Subscription style.css" rel="stylesheet" />
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <div class="sub-hero">
+        <div class="sub-hero-inner">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Memberships Now Open
+            </div>
+            <h1>JOIN THE<br /><span>INFINITY CIRCLE</span></h1>
+            <p>Compete in exclusive championships, get early access to the hottest releases, unlock member-only discounts, and be part of South Africa's fastest-growing gaming community.</p>
+        </div>
+    </div>
+
+    <!-- Perks Strip -->
+    <div class="perks-strip">
+        <div class="perk">
+            <span class="perk-icon">🏆</span>
+            <span class="perk-text">Championship Access</span>
+        </div>
+        <div class="perk">
+            <span class="perk-icon">⚡</span>
+            <span class="perk-text">Early Game Access</span>
+        </div>
+        <div class="perk">
+            <span class="perk-icon">💸</span>
+            <span class="perk-text">Exclusive Discounts</span>
+        </div>
+        <div class="perk">
+            <span class="perk-icon">🎮</span>
+            <span class="perk-text">Members-Only Events</span>
+        </div>
+        <div class="perk">
+            <span class="perk-icon">🛡️</span>
+            <span class="perk-text">Cancel Anytime</span>
+        </div>
+        <div class="perk">
+            <span class="perk-icon">📦</span>
+            <span class="perk-text">Monthly Game Box</span>
+        </div>
+    </div>
+
+    <!-- Pricing Plans -->
+    <div class="plans-section">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-sub">All plans include a 7-day free trial. No credit card required to start.</p>
+
+        <div class="gallery-shell" aria-label="Subscription plans gallery">
+            <button type="button" class="gallery-nav prev" id="plan-prev" aria-label="Previous plan">&#10094;</button>
+            <div class="plans-grid" id="plans-gallery">
+
+            <!-- Starter -->
+            <div class="plan-card">
+                <div class="plan-name">Starter</div>
+                <div class="plan-price">
+                    <span class="currency">R</span><span class="amount">79</span><span class="period">/ month</span>
+                </div>
+                <p class="plan-desc">Perfect for casual gamers who want to stay connected to the community.</p>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> Access to community tournaments</li>
+                    <li><span class="check">✓</span> 5% discount on all games</li>
+                    <li><span class="check">✓</span> Monthly newsletter &amp; patch notes</li>
+                    <li><span class="check">✓</span> Infinity Gaming digital badge</li>
+                    <li class="disabled"><span class="cross">✕</span> Championship entry tickets</li>
+                    <li class="disabled"><span class="cross">✕</span> Early game access</li>
+                    <li class="disabled"><span class="cross">✕</span> Monthly game box</li>
+                    <li class="disabled"><span class="cross">✕</span> Priority matchmaking</li>
+                </ul>
+                <a href="#subscribe" class="plan-btn plan-btn-outline">Get Started</a>
+            </div>
+
+            <!-- Pro (Featured) -->
+            <div class="plan-card featured">
+                <div class="featured-tag">Most Popular</div>
+                <div class="plan-name">Pro Gamer</div>
+                <div class="plan-price">
+                    <span class="currency">R</span><span class="amount">199</span><span class="period">/ month</span>
+                </div>
+                <p class="plan-desc">For serious competitors who want to dominate the leaderboard and unlock real rewards.</p>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> All Starter benefits</li>
+                    <li><span class="check">✓</span> 2 championship entry tickets / month</li>
+                    <li><span class="check">✓</span> 15% discount on all products</li>
+                    <li><span class="check">✓</span> 48-hour early game access</li>
+                    <li><span class="check">✓</span> Monthly digital game box (2 titles)</li>
+                    <li><span class="check">✓</span> Priority matchmaking queue</li>
+                    <li><span class="check">✓</span> Exclusive Pro member Discord role</li>
+                    <li class="disabled"><span class="cross">✕</span> Infinite championship entries</li>
+                </ul>
+                <a href="#subscribe" class="plan-btn plan-btn-gold">Join Pro</a>
+            </div>
+
+            <!-- Elite -->
+            <div class="plan-card">
+                <div class="plan-name">Elite</div>
+                <div class="plan-price">
+                    <span class="currency">R</span><span class="amount">399</span><span class="period">/ month</span>
+                </div>
+                <p class="plan-desc">The full Infinity Gaming experience for those who game at the highest level.</p>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> All Pro Gamer benefits</li>
+                    <li><span class="check">✓</span> Unlimited championship entries</li>
+                    <li><span class="check">✓</span> 25% discount on all products</li>
+                    <li><span class="check">✓</span> 72-hour early game access</li>
+                    <li><span class="check">✓</span> Monthly physical game box (3 titles)</li>
+                    <li><span class="check">✓</span> Dedicated support line</li>
+                    <li><span class="check">✓</span> Infinity Gaming merch drop (quarterly)</li>
+                    <li><span class="check">✓</span> Custom Elite profile badge</li>
+                </ul>
+                <a href="#subscribe" class="plan-btn plan-btn-outline">Go Elite</a>
+            </div>
+
+            </div>
+            <button type="button" class="gallery-nav next" id="plan-next" aria-label="Next plan">&#10095;</button>
+        </div>
+
+        <div class="gallery-dots" id="plans-dots" aria-label="Plan navigation dots">
+            <button type="button" class="gallery-dot active" data-index="0" aria-label="Go to Starter plan"></button>
+            <button type="button" class="gallery-dot" data-index="1" aria-label="Go to Pro Gamer plan"></button>
+            <button type="button" class="gallery-dot" data-index="2" aria-label="Go to Elite plan"></button>
+        </div>
+    </div>
+
+    <!-- Championships Section -->
+    <div class="championships-section">
+        <h2 class="section-title">What You're Playing For</h2>
+        <p class="section-sub">Members compete in monthly and seasonal championships across multiple titles.</p>
+
+        <div class="champ-grid">
+            <div class="champ-card">
+                <span class="champ-icon">🎯</span>
+                <h3>Monthly Showdown</h3>
+                <p>Every month, members face off in ranked bracket tournaments across popular titles. Top 3 win store credit and exclusive digital rewards.</p>
+                <span class="champ-prize">Prize Pool: R2,500</span>
+            </div>
+            <div class="champ-card">
+                <span class="champ-icon">⚔️</span>
+                <h3>Seasonal Championship</h3>
+                <p>The biggest quarterly event on the Infinity Gaming calendar. Earn points all season and compete in the grand finals for major prizes.</p>
+                <span class="champ-prize">Prize Pool: R15,000</span>
+            </div>
+            <div class="champ-card">
+                <span class="champ-icon">👑</span>
+                <h3>Infinity Grand Cup</h3>
+                <p>Once a year, our top-ranked members compete in the prestigious Infinity Grand Cup — the ultimate test of skill, streamed live for the community.</p>
+                <span class="champ-prize">Prize Pool: R50,000</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscription Form -->
+    <div class="form-section" id="subscribe">
+        <div class="form-inner">
+            <h2 class="section-title">Start Your Free Trial</h2>
+            <p class="section-sub">7 days free, then billed monthly. Cancel at any time — no questions asked.</p>
+
+            <form class="sub-form" action="#" method="POST" novalidate>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sub-firstname">First Name</label>
+                        <input type="text" id="sub-firstname" name="firstname" placeholder="Your first name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="sub-lastname">Last Name</label>
+                        <input type="text" id="sub-lastname" name="lastname" placeholder="Your surname" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sub-email">Email Address</label>
+                    <input type="email" id="sub-email" name="email" placeholder="gamer@example.com" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="sub-gamertag">Gamertag / Username</label>
+                    <input type="text" id="sub-gamertag" name="gamertag" placeholder="e.g. InfinitySlayer99" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="sub-game">Favourite Game</label>
+                    <select id="sub-game" name="favourite_game" required>
+                        <option value="" disabled selected>Select a game</option>
+                        <option value="fortnite">Fortnite</option>
+                        <option value="cod">Call of Duty</option>
+                        <option value="gta">GTA V</option>
+                        <option value="rdr2">Red Dead Redemption 2</option>
+                        <option value="witcher">The Witcher 3</option>
+                        <option value="minecraft">Minecraft</option>
+                        <option value="dark-souls">Dark Souls</option>
+                        <option value="last-of-us">The Last of Us</option>
+                        <option value="zelda">The Legend of Zelda</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-divider"></div>
+
+                <div class="form-group">
+                    <label>Select Plan</label>
+                    <div class="plan-selector">
+                        <label class="plan-option">
+                            <input type="radio" name="plan" value="starter" />
+                            <span class="plan-opt-name">Starter</span>
+                            <span class="plan-opt-price">R79/mo</span>
+                        </label>
+                        <label class="plan-option">
+                            <input type="radio" name="plan" value="pro" checked />
+                            <span class="plan-opt-name">Pro</span>
+                            <span class="plan-opt-price">R199/mo</span>
+                        </label>
+                        <label class="plan-option">
+                            <input type="radio" name="plan" value="elite" />
+                            <span class="plan-opt-name">Elite</span>
+                            <span class="plan-opt-price">R399/mo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="agree-row">
+                    <input type="checkbox" id="agree" name="agree" required />
+                    <label for="agree">
+                        I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>. I understand I can cancel at any time before the trial ends.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Activate Free Trial</button>
+
+                <p class="form-note">🔒 &nbsp;Secure sign-up &mdash; no payment required for trial</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-sub" style="margin-bottom: 2rem;">Got questions? We've got answers.</p>
+
+        <details class="faq-item">
+            <summary>How does the free trial work?</summary>
+            <p>You get 7 days of full access to your chosen plan at zero cost. No credit card is required to activate the trial. If you decide not to continue, simply cancel before the 7 days are up and you won't be charged anything.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Can I upgrade or downgrade my plan?</summary>
+            <p>Yes, you can switch between Starter, Pro Gamer, and Elite at any time from your account settings. Changes take effect at the start of the next billing cycle.</p>
+        </details>
+        <details class="faq-item">
+            <summary>How do championship entry tickets work?</summary>
+            <p>Entry tickets are credited to your account on the 1st of each month. Pro members receive 2 tickets; Elite members get unlimited access to all championship events. Unused tickets do not roll over to the next month.</p>
+        </details>
+        <details class="faq-item">
+            <summary>What is the monthly game box?</summary>
+            <p>The game box is a curated selection of digital game keys from our catalogue, chosen based on your favourite game preferences. Pro members receive 2 titles; Elite members receive 3 titles per month.</p>
+        </details>
+        <details class="faq-item">
+            <summary>How do I cancel my subscription?</summary>
+            <p>You can cancel anytime by visiting your account settings or by contacting us via the Contact page. There are no cancellation fees and you retain access until the end of your current billing period.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Are championships open to all skill levels?</summary>
+            <p>Absolutely. Community tournaments welcome all skill levels. As you progress, you'll earn ranking points that qualify you for higher-tier championships. Everyone starts somewhere — the Infinity Gaming community is welcoming to all.</p>
+        </details>
+    </div>
+
+    <script src="../Scripts/script.js"></script>
+    <script>
+        // Plan selector highlight sync
+        document.querySelectorAll('.plan-option input[type="radio"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.plan-option').forEach(function(opt) {
+                    opt.classList.remove('selected');
+                });
+                if (this.checked) {
+                    this.closest('.plan-option').classList.add('selected');
+                }
+            });
+            // Set initial state
+            if (radio.checked) {
+                radio.closest('.plan-option').classList.add('selected');
+            }
+        });
+
+        // Subscription plans gallery controls
+        (function() {
+            var gallery = document.getElementById('plans-gallery');
+            var prevBtn = document.getElementById('plan-prev');
+            var nextBtn = document.getElementById('plan-next');
+            var dots = Array.prototype.slice.call(document.querySelectorAll('.gallery-dot'));
+            if (!gallery || !prevBtn || !nextBtn || dots.length === 0) {
+                return;
+            }
+
+            var cards = Array.prototype.slice.call(gallery.querySelectorAll('.plan-card'));
+
+            function goTo(index) {
+                if (!cards[index]) {
+                    return;
+                }
+                gallery.scrollTo({
+                    left: cards[index].offsetLeft - gallery.offsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+
+            function activeIndex() {
+                var center = gallery.scrollLeft + gallery.clientWidth / 2;
+                var closest = 0;
+                var minDistance = Number.MAX_VALUE;
+
+                cards.forEach(function(card, index) {
+                    var cardCenter = card.offsetLeft - gallery.offsetLeft + card.clientWidth / 2;
+                    var distance = Math.abs(center - cardCenter);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closest = index;
+                    }
+                });
+
+                return closest;
+            }
+
+            function updateDots() {
+                var current = activeIndex();
+                dots.forEach(function(dot, index) {
+                    dot.classList.toggle('active', index === current);
+                });
+            }
+
+            prevBtn.addEventListener('click', function() {
+                var current = activeIndex();
+                goTo(Math.max(current - 1, 0));
+            });
+
+            nextBtn.addEventListener('click', function() {
+                var current = activeIndex();
+                goTo(Math.min(current + 1, cards.length - 1));
+            });
+
+            dots.forEach(function(dot) {
+                dot.addEventListener('click', function() {
+                    var index = Number(dot.getAttribute('data-index'));
+                    goTo(index);
+                });
+            });
+
+            gallery.addEventListener('scroll', updateDots, { passive: true });
+            window.addEventListener('resize', updateDots);
+            updateDots();
+        })();
+    </script>
+</body>
+</html>

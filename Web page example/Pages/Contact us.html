@@ -1,40 +1,57 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Infinity Gaming</title>
     <link href="../Styles/Contact us style.css" rel="stylesheet" />
     <link href="../Styles/navbar style.css" rel="stylesheet" />
 </head>
 <body>
     <nav>
         <div class="logo">
-
-            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" height="80" />
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" height="80" />
         </div>
-        <ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
             <li><a href="Home Page.html">Home</a></li>
             <li><a href="About us.html">About Us</a></li>
             <li><a href="Games.html">Games</a></li>
             <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
             <li><a href="Contact us.html">Contact Us</a></li>
             <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
         </ul>
     </nav>
-    <h2>Contact Us</h2>
-    <form action="submit_form.php" method="POST">
-        <label for="name">First Name:</label>
-        <input type="text" id="name" name="name" required />
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname" required>
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="cellphone">Cellphone Number:</label>
-        <input type="tel" id="cellphone" name="cellphone" required>
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <a href="another_page.html" class="button">Submit</a>
-    </form>
 
+    <div class="contact-wrapper">
+        <form action="submit_form.php" method="POST">
+            <h2>Contact Us</h2>
+
+            <label for="name">First Name</label>
+            <input type="text" id="name" name="name" placeholder="Your first name" required />
+
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="surname" placeholder="Your surname" required />
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+
+            <label for="cellphone">Cellphone Number</label>
+            <input type="tel" id="cellphone" name="cellphone" placeholder="+27 00 000 0000" required />
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+
+            <button type="submit" class="button">Send Message</button>
+        </form>
+    </div>
+
+    <script src="../Scripts/script.js"></script>
 </body>
 </html>

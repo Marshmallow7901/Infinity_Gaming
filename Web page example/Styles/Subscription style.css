@@ -1,0 +1,870 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0a0a0f;
+    color: #f0f0f8;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ─── Section Shared ─── */
+section {
+    padding: 5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ─── Hero Banner ─── */
+.sub-hero {
+    position: relative;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 215, 0, 0.12) 0%, transparent 70%),
+                linear-gradient(180deg, #0d0d15 0%, #0a0a0f 100%);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.sub-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.07) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.sub-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.07);
+    padding: 0.35rem 1.1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: pulse 1.8s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+.sub-hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.sub-hero h1 span {
+    color: #ffd700;
+}
+
+.sub-hero p {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: #9090a8;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ─── Perks Strip ─── */
+.perks-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid rgba(255, 215, 0, 0.07);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.07);
+    background: rgba(255, 215, 0, 0.025);
+    padding: 1.5rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.perk {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.75rem;
+    border-right: 1px solid rgba(255, 215, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.perk:last-child {
+    border-right: none;
+}
+
+.perk-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.perk-text {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #c8c8e0;
+    white-space: nowrap;
+}
+
+/* ─── Plans Section ─── */
+.plans-section {
+    padding: 5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #f0f0f8;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+}
+
+.section-sub {
+    text-align: center;
+    color: #7070a0;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.gallery-shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+}
+
+.gallery-nav {
+    display: none;
+}
+
+.gallery-dots {
+    display: none;
+}
+
+.plan-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 16px;
+    padding: 2.25rem 2rem;
+    position: relative;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(255, 215, 0, 0.1);
+}
+
+/* Featured plan */
+.plan-card.featured {
+    border-color: rgba(255, 215, 0, 0.55);
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    transform: scale(1.04);
+    box-shadow: 0 12px 48px rgba(255, 215, 0, 0.15);
+}
+
+.plan-card.featured:hover {
+    transform: scale(1.04) translateY(-5px);
+    box-shadow: 0 24px 60px rgba(255, 215, 0, 0.22);
+}
+
+.featured-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd700;
+    color: #0a0a0f;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 1.1rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.plan-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+}
+
+.plan-price {
+    margin-bottom: 1.5rem;
+}
+
+.plan-price .amount {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.plan-price .currency {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffd700;
+    vertical-align: super;
+    margin-right: 2px;
+}
+
+.plan-price .period {
+    font-size: 0.8rem;
+    color: #7070a0;
+    margin-left: 4px;
+}
+
+.plan-desc {
+    font-size: 0.875rem;
+    color: #8080a8;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+    flex: none;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+    font-size: 0.875rem;
+    color: #c0c0d8;
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plan-features .check {
+    color: #22c55e;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.plan-features .cross {
+    color: #4a4a6a;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.plan-features li.disabled {
+    color: #4a4a6a;
+}
+
+.plan-btn {
+    display: block;
+    width: 100%;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.plan-btn-outline {
+    background: transparent;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.plan-btn-outline:hover {
+    background: rgba(255, 215, 0, 0.08);
+    border-color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.plan-btn-gold {
+    background: #ffd700;
+    color: #0a0a0f;
+}
+
+.plan-btn-gold:hover {
+    background: #ffec6e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.35);
+}
+
+/* ─── Subscription Form ─── */
+.form-section {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.07);
+}
+
+.form-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.form-inner .section-title {
+    margin-bottom: 0.6rem;
+}
+
+.form-inner .section-sub {
+    margin-bottom: 2.5rem;
+}
+
+.sub-form {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    border-radius: 16px;
+    padding: 2.5rem 2.25rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: fadeUp 0.7s ease;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8080a8;
+    margin-bottom: 0.45rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.14);
+    border-radius: 8px;
+    color: #f0f0f8;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffd700' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #0d0d18;
+    color: #f0f0f8;
+}
+
+.form-group input::placeholder {
+    color: #4a4a6a;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.07);
+}
+
+.form-divider {
+    height: 1px;
+    background: rgba(255, 215, 0, 0.08);
+    margin: 0.75rem 0 1.5rem;
+}
+
+.plan-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+}
+
+.plan-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.875rem 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 0.3rem;
+    position: relative;
+}
+
+.plan-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.plan-option:has(input:checked),
+.plan-option.selected {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.08);
+}
+
+.plan-option:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.plan-opt-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.plan-opt-price {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #f0f0f8;
+}
+
+.agree-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    font-size: 0.82rem;
+    color: #7070a0;
+    line-height: 1.5;
+}
+
+.agree-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: #ffd700;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.agree-row a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.agree-row a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #ffd700;
+    color: #0a0a0f;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+    background: #ffec6e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255, 215, 0, 0.35);
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: #5a5a78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+/* ─── Championships Section ─── */
+.championships-section {
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.champ-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+}
+
+.champ-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 14px;
+    padding: 2rem 1.5rem;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.champ-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.champ-card:hover {
+    border-color: rgba(255, 215, 0, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(255, 215, 0, 0.1);
+}
+
+.champ-card:hover::before {
+    opacity: 1;
+}
+
+.champ-icon {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    display: block;
+    line-height: 1;
+}
+
+.champ-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 0.625rem;
+    letter-spacing: 0.05em;
+}
+
+.champ-card p {
+    font-size: 0.85rem;
+    color: #8080a8;
+    line-height: 1.65;
+}
+
+.champ-prize {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #22c55e;
+    letter-spacing: 0.06em;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+}
+
+/* ─── FAQ ─── */
+.faq-section {
+    padding: 5rem 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 215, 0, 0.07);
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+    padding: 1.25rem 0;
+}
+
+.faq-item summary {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e0e0f0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 0.5rem;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: #ffd700;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item p {
+    margin-top: 0.875rem;
+    font-size: 0.875rem;
+    color: #7070a0;
+    line-height: 1.75;
+    padding-right: 1rem;
+}
+
+/* ─── Responsive ─── */
+@media screen and (max-width: 900px) {
+    .gallery-shell {
+        grid-template-columns: auto 1fr auto;
+        gap: 0.7rem;
+    }
+
+    .gallery-nav {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.1rem;
+        height: 2.1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 215, 0, 0.38);
+        background: rgba(255, 215, 0, 0.08);
+        color: #ffd700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .gallery-nav:hover {
+        background: rgba(255, 215, 0, 0.16);
+        border-color: #ffd700;
+    }
+
+    .plans-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: min(85vw, 340px);
+        gap: 1rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.4rem;
+        scrollbar-width: none;
+    }
+
+    .plans-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .plan-card {
+        scroll-snap-align: center;
+    }
+
+    .plan-card.featured {
+        transform: none;
+        box-shadow: 0 12px 36px rgba(255, 215, 0, 0.16);
+    }
+
+    .plan-card.featured:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-dots {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    .gallery-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: none;
+        background: rgba(255, 215, 0, 0.25);
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .gallery-dot.active {
+        background: #ffd700;
+        transform: scale(1.22);
+    }
+
+    .champ-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 2rem auto 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .sub-hero {
+        padding: 3.5rem 1.25rem 3rem;
+    }
+
+    .gallery-shell {
+        gap: 0.5rem;
+    }
+
+    .gallery-nav {
+        width: 1.9rem;
+        height: 1.9rem;
+    }
+
+    .plans-grid {
+        grid-auto-columns: min(90vw, 315px);
+    }
+
+    .perks-strip {
+        justify-content: flex-start;
+        padding: 1rem 0;
+    }
+
+    .perk {
+        padding: 0.5rem 1.25rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-selector {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .plan-option {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+    }
+
+    .sub-form {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .plans-section {
+        padding: 3.5rem 1rem;
+    }
+
+    .form-section {
+        padding: 3.5rem 1rem;
+    }
+
+    .championships-section {
+        padding: 3.5rem 1rem;
+    }
+
+    .faq-section {
+        padding: 3.5rem 1rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .sub-hero h1 {
+        font-size: clamp(1.9rem, 11vw, 2.8rem);
+    }
+
+    .plan-price .amount {
+        font-size: 2.25rem;
+    }
+
+    .plan-card {
+        padding: 1.75rem 1.25rem;
+    }
+}

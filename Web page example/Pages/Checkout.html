@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Infinity Gaming</title>
+    <link href="../Styles/Checkout style.css" rel="stylesheet" />
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <main class="checkout-wrap">
+        <header class="checkout-head">
+            <h1>Secure Checkout</h1>
+            <p>Review your cart, update quantities, and place your order. Your cart is synced from the products you added.</p>
+        </header>
+
+        <section class="checkout-grid">
+            <article class="checkout-card">
+                <h2 class="card-title">Your Cart</h2>
+                <div id="cart-list" class="cart-list"></div>
+                <div class="action-row">
+                    <button type="button" class="action-btn" id="continue-shopping">Continue Shopping</button>
+                    <button type="button" class="action-btn" id="clear-cart">Clear Cart</button>
+                </div>
+            </article>
+
+            <aside class="checkout-card">
+                <h2 class="card-title">Billing & Payment</h2>
+
+                <div class="summary-lines">
+                    <div class="summary-line"><span>Subtotal</span><span id="subtotal">R0.00</span></div>
+                    <div class="summary-line"><span>VAT (15%)</span><span id="vat">R0.00</span></div>
+                    <div class="summary-line"><span>Shipping</span><span id="shipping">R0.00</span></div>
+                    <div class="summary-line total"><span>Total</span><span id="grand-total">R0.00</span></div>
+                </div>
+
+                <form id="checkout-form" class="order-form" novalidate>
+                    <div class="form-row">
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required />
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div>
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" required />
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required />
+                        </div>
+                        <div>
+                            <label for="postalCode">Postal Code</label>
+                            <input type="text" id="postalCode" name="postalCode" required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod" required>
+                            <option value="">Select payment method</option>
+                            <option value="card">Card</option>
+                            <option value="eft">EFT</option>
+                            <option value="wallet">Digital Wallet</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="place-order-btn">Place Order</button>
+                </form>
+
+                <div id="checkout-feedback"></div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+    <script>
+        (function () {
+            var cartList = document.getElementById('cart-list');
+            var subtotalEl = document.getElementById('subtotal');
+            var vatEl = document.getElementById('vat');
+            var shippingEl = document.getElementById('shipping');
+            var grandTotalEl = document.getElementById('grand-total');
+            var placeOrderBtn = document.getElementById('place-order-btn');
+            var clearCartBtn = document.getElementById('clear-cart');
+            var continueBtn = document.getElementById('continue-shopping');
+            var checkoutForm = document.getElementById('checkout-form');
+            var feedback = document.getElementById('checkout-feedback');
+
+            function getCart() {
+                var raw = localStorage.getItem('cartItems');
+                if (!raw) {
+                    return [];
+                }
+
+                try {
+                    var parsed = JSON.parse(raw);
+                    return Array.isArray(parsed) ? parsed : [];
+                } catch (error) {
+                    return [];
+                }
+            }
+
+            function saveCart(items) {
+                localStorage.setItem('cartItems', JSON.stringify(items));
+            }
+
+            function toCurrency(value) {
+                return 'R' + Number(value).toFixed(2);
+            }
+
+            function updateSummary(items) {
+                var subtotal = items.reduce(function (sum, item) {
+                    return sum + (Number(item.price) * Number(item.quantity || 1));
+                }, 0);
+                var vat = subtotal * 0.15;
+                var shipping = subtotal > 0 ? 120 : 0;
+                var total = subtotal + vat + shipping;
+
+                subtotalEl.textContent = toCurrency(subtotal);
+                vatEl.textContent = toCurrency(vat);
+                shippingEl.textContent = toCurrency(shipping);
+                grandTotalEl.textContent = toCurrency(total);
+
+                localStorage.setItem('totalPrice', total.toFixed(2));
+                placeOrderBtn.disabled = items.length === 0;
+            }
+
+            function renderCart() {
+                var items = getCart();
+                cartList.innerHTML = '';
+
+                if (!items.length) {
+                    cartList.innerHTML = '<div class="empty-state">Your cart is empty.<br />Add games or PCs, then come back to checkout.</div>';
+                    updateSummary([]);
+                    return;
+                }
+
+                items.forEach(function (item, index) {
+                    var row = document.createElement('div');
+                    row.className = 'cart-item';
+                    row.innerHTML =
+                        '<div>' +
+                            '<div class="item-name">' + item.name + '</div>' +
+                            '<div class="item-price">' + toCurrency(Number(item.price) * Number(item.quantity || 1)) + '</div>' +
+                        '</div>' +
+                        '<div class="item-actions">' +
+                            '<button type="button" class="qty-btn" data-action="decrease" data-index="' + index + '">-</button>' +
+                            '<span class="qty-value">' + Number(item.quantity || 1) + '</span>' +
+                            '<button type="button" class="qty-btn" data-action="increase" data-index="' + index + '">+</button>' +
+                            '<button type="button" class="remove-btn" data-action="remove" data-index="' + index + '">Remove</button>' +
+                        '</div>';
+                    cartList.appendChild(row);
+                });
+
+                updateSummary(items);
+            }
+
+            cartList.addEventListener('click', function (event) {
+                var button = event.target.closest('button[data-action]');
+                if (!button) {
+                    return;
+                }
+
+                var action = button.getAttribute('data-action');
+                var index = Number(button.getAttribute('data-index'));
+                var items = getCart();
+
+                if (!items[index]) {
+                    return;
+                }
+
+                if (action === 'increase') {
+                    items[index].quantity = Number(items[index].quantity || 1) + 1;
+                }
+
+                if (action === 'decrease') {
+                    items[index].quantity = Math.max(1, Number(items[index].quantity || 1) - 1);
+                }
+
+                if (action === 'remove') {
+                    items.splice(index, 1);
+                }
+
+                saveCart(items);
+                renderCart();
+            });
+
+            clearCartBtn.addEventListener('click', function () {
+                localStorage.removeItem('cartItems');
+                localStorage.removeItem('totalPrice');
+                renderCart();
+                feedback.innerHTML = '';
+            });
+
+            continueBtn.addEventListener('click', function () {
+                window.location.href = 'Games.html';
+            });
+
+            checkoutForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var items = getCart();
+
+                if (!items.length) {
+                    feedback.innerHTML = '<div class="empty-state">Add at least one product before placing an order.</div>';
+                    return;
+                }
+
+                if (!checkoutForm.checkValidity()) {
+                    checkoutForm.reportValidity();
+                    return;
+                }
+
+                localStorage.removeItem('cartItems');
+                localStorage.removeItem('totalPrice');
+                checkoutForm.reset();
+                renderCart();
+
+                feedback.innerHTML = '<div class="success-state">Order placed successfully. Check your email for confirmation and shipping updates.</div>';
+            });
+
+            renderCart();
+        })();
+    </script>
+</body>
+</html>

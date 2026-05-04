@@ -1,26 +1,207 @@
-﻿body {
-    background: linear-gradient(to right,  black, gold);
-    color: darkred;
-    font-family: Arial, sans-serif;
-    margin: 20px;
+﻿@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    background: #0a0a0f;
+    color: #f0f0f8;
+    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
 
 h1 {
+    font-family: 'Orbitron', sans-serif;
     text-align: center;
+    font-size: 2.75rem;
+    color: #ffd700;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 1.75rem;
+    color: #ffd700;
+    margin: 3rem 0 2rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
 }
 
 .event {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 215, 0, 0.14);
+    border-radius: 14px;
+    padding: 2rem 2.25rem;
+    margin: 0 auto 1.5rem;
+    max-width: 800px;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
-.event-date {
-    font-weight: bold;
+.event:hover {
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.12);
 }
 
-img {
-    width: 200px;
-    height: 150px; 
+.event h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    margin: 0 0 0.875rem 0;
+    text-align: left;
+    color: #ffd700;
+    letter-spacing: 0.02em;
+}
+
+.event p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #b0b0c8;
+    margin: 0;
+}
+
+.date {
+    font-weight: 700;
+    color: #22c55e;
+    font-size: 1.05rem;
+}
+
+/* Marquee Container */
+marquee {
+    margin: 2rem auto;
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem 0;
+    border-radius: 15px;
+}
+
+marquee img {
+    width: 180px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 2rem;
+    filter: brightness(0.9);
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+marquee img:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1.5rem 0.875rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+        margin: 2rem 0 1.25rem;
+    }
+
+    .event {
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .event h2 {
+        font-size: 1.15rem;
+    }
+
+    .event p {
+        font-size: 0.95rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    marquee {
+        padding: 1.25rem 0;
+    }
+
+    marquee img {
+        width: 110px;
+        height: 80px;
+        margin: 0 0.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .event {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+
+    .event h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .event p {
+        font-size: 0.95rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    marquee {
+        padding: 1rem 0;
+        border-radius: 10px;
+    }
+
+    marquee img {
+        width: 100px;
+        height: 70px;
+        margin: 0 0.75rem;
+    }
+}
+
+/* Tablet landscape */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .event {
+        max-width: 700px;
+    }
+
+    marquee img {
+        width: 160px;
+        height: 110px;
+    }
 }
