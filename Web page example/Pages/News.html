@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming News - Infinity Gaming</title>
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #0a0a0f;
+            color: #d0d4f0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        .news-shell {
+            max-width: 1180px;
+            margin: 1.8rem auto 3.6rem;
+            padding: 0 1rem;
+        }
+
+        .news-hero {
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 14px;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.16), rgba(255, 255, 255, 0.02) 50%);
+            padding: 1.3rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            background: rgba(255, 215, 0, 0.09);
+            color: #ffd700;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.24rem 0.6rem;
+            margin-bottom: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .news-hero h1 {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 3.8vw, 2rem);
+            letter-spacing: 0.04em;
+            color: #f6f6ff;
+        }
+
+        .news-hero p {
+            margin: 0.45rem 0 0;
+            color: #a6abcb;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .news-status {
+            min-height: 1.2rem;
+            font-size: 0.8rem;
+            color: #8c93b8;
+            margin: 0.2rem 0 0.8rem;
+        }
+
+        .news-layout {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.95fr) minmax(320px, 1.35fr);
+            gap: 0.9rem;
+            align-items: start;
+        }
+
+        .news-list,
+        .news-detail {
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .news-list {
+            padding: 0.6rem;
+            max-height: 72vh;
+            overflow: auto;
+        }
+
+        .news-item {
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            background: rgba(10, 11, 18, 0.75);
+            padding: 0.55rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+
+        .news-item:hover,
+        .news-item.active {
+            border-color: rgba(255, 215, 0, 0.45);
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .news-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-item-thumb {
+            width: 100%;
+            height: 118px;
+            object-fit: cover;
+            border-radius: 7px;
+            display: block;
+            margin-bottom: 0.45rem;
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .news-item-title {
+            margin: 0 0 0.28rem;
+            font-size: 0.84rem;
+            color: #e4e6f8;
+            line-height: 1.35;
+            font-weight: 600;
+        }
+
+        .news-item-meta {
+            font-size: 0.72rem;
+            color: #8e93b5;
+        }
+
+        .news-detail {
+            padding: 0.9rem;
+        }
+
+        .news-detail-empty {
+            border: 1px dashed rgba(255, 215, 0, 0.24);
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #8e93b5;
+            font-size: 0.9rem;
+        }
+
+        .news-detail-source {
+            display: inline-flex;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 999px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            margin-bottom: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .news-detail h2 {
+            margin: 0 0 0.45rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1rem, 2.4vw, 1.45rem);
+            color: #f5f5ff;
+            line-height: 1.35;
+        }
+
+        .news-detail-meta {
+            font-size: 0.76rem;
+            color: #9298ba;
+            margin-bottom: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 0.85rem;
+        }
+
+        .news-detail-thumb {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.14);
+            margin-bottom: 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .news-detail-body {
+            font-size: 0.9rem;
+            color: #c4c9e4;
+            line-height: 1.72;
+            white-space: pre-wrap;
+            margin-bottom: 0.9rem;
+        }
+
+        .news-detail-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .news-link-btn {
+            text-decoration: none;
+            min-height: auto;
+            border-radius: 8px;
+            font-size: 0.73rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.42rem 0.7rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .news-link-btn::after {
+            display: none;
+        }
+
+        .news-link-primary {
+            background: linear-gradient(135deg, #ffd700, #ffad1f);
+            color: #10121d;
+        }
+
+        .news-link-secondary {
+            border: 1px solid rgba(255, 215, 0, 0.34);
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        @media (max-width: 900px) {
+            .news-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .news-list {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+            <li><a href="Dashboard.html" id="dashboard-nav-link">Dashboard</a></li>
+            <li><a href="Account.html" id="account-nav-link">Account</a></li>
+        </ul>
+    </nav>
+
+    <main class="news-shell">
+        <section class="news-hero">
+            <span class="news-kicker">Gaming Pulse</span>
+            <h1>Live Gaming News</h1>
+            <p>Latest headlines from r/gaming, styled for Infinity Gaming.</p>
+        </section>
+
+        <p class="news-status" id="news-status">Loading latest headlines...</p>
+
+        <section class="news-layout">
+            <div class="news-list" id="news-list"></div>
+            <article class="news-detail" id="news-detail"></article>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+    <script>
+        (function () {
+            var listEl = document.getElementById('news-list');
+            var detailEl = document.getElementById('news-detail');
+            var statusEl = document.getElementById('news-status');
+            var articles = [];
+            var selectedId = '';
+
+            if (!listEl || !detailEl || !statusEl) {
+                return;
+            }
+
+            function esc(str) {
+                return String(str || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function fmtDate(unixUtc) {
+                if (!unixUtc) {
+                    return '';
+                }
+                try {
+                    return new Date(unixUtc * 1000).toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' });
+                } catch (err) {
+                    return '';
+                }
+            }
+
+            function validThumb(url) {
+                if (!url) {
+                    return '';
+                }
+                var value = String(url);
+                if (value.indexOf('http') !== 0) {
+                    return '';
+                }
+                if (value.indexOf('default') !== -1 || value.indexOf('self') !== -1 || value.indexOf('nsfw') !== -1) {
+                    return '';
+                }
+                return value;
+            }
+
+            function mapArticle(post) {
+                return {
+                    id: String(post.id || ''),
+                    title: post.title || 'Untitled story',
+                    subtitle: post.author ? ('u/' + post.author) : 'r/gaming',
+                    url: 'https://www.reddit.com' + (post.permalink || ''),
+                    articleUrl: post.url || '',
+                    thumbnail: validThumb(post.thumbnail),
+                    selftext: post.selftext || '',
+                    score: Number(post.score || 0),
+                    numComments: Number(post.num_comments || 0),
+                    createdUtc: Number(post.created_utc || 0)
+                };
+            }
+
+            function persistSelection(article) {
+                if (!article) {
+                    return;
+                }
+                try {
+                    sessionStorage.setItem('ig_news_article', JSON.stringify(article));
+                } catch (err) {
+                    // Ignore storage errors and keep UI responsive.
+                }
+            }
+
+            function renderList(items) {
+                if (!items.length) {
+                    listEl.innerHTML = '<div class="news-detail-empty">No news articles are available right now.</div>';
+                    return;
+                }
+
+                var html = '';
+                for (var i = 0; i < items.length; i++) {
+                    var a = items[i];
+                    var activeClass = (a.id && a.id === selectedId) ? ' active' : '';
+                    html += '<article class="news-item' + activeClass + '" data-news-id="' + esc(a.id) + '">';
+                    if (a.thumbnail) {
+                        html += '<img class="news-item-thumb" src="' + esc(a.thumbnail) + '" alt="" loading="lazy" />';
+                    }
+                    html += '<h3 class="news-item-title">' + esc(a.title) + '</h3>';
+                    html += '<p class="news-item-meta">' + esc(a.subtitle) + ' | ' + esc(fmtDate(a.createdUtc)) + '</p>';
+                    html += '</article>';
+                }
+                listEl.innerHTML = html;
+            }
+
+            function renderDetail(article) {
+                if (!article) {
+                    detailEl.innerHTML = '<div class="news-detail-empty">Select a headline to read the full story here.</div>';
+                    return;
+                }
+
+                selectedId = article.id || '';
+                persistSelection(article);
+                document.title = esc(article.title) + ' - Infinity Gaming';
+
+                var meta = '';
+                meta += '<span>' + esc(article.subtitle || 'r/gaming') + '</span>';
+                if (article.createdUtc) {
+                    meta += '<span>Posted: ' + esc(fmtDate(article.createdUtc)) + '</span>';
+                }
+                if (article.score) {
+                    meta += '<span>' + article.score.toLocaleString() + ' upvotes</span>';
+                }
+                if (article.numComments) {
+                    meta += '<span>' + article.numComments.toLocaleString() + ' comments</span>';
+                }
+
+                var body = article.selftext && String(article.selftext).trim().length
+                    ? esc(article.selftext)
+                    : 'No inline summary available for this story. Use the links below to read the source and discussion.';
+
+                var external = article.articleUrl && String(article.articleUrl).indexOf('http') === 0
+                    ? '<a class="news-link-btn news-link-primary" href="' + esc(article.articleUrl) + '" target="_blank" rel="noopener noreferrer">Open Source</a>'
+                    : '';
+
+                detailEl.innerHTML =
+                    '<span class="news-detail-source">r/gaming feed</span>'
+                    + '<h2>' + esc(article.title) + '</h2>'
+                    + '<div class="news-detail-meta">' + meta + '</div>'
+                    + (article.thumbnail ? '<img class="news-detail-thumb" src="' + esc(article.thumbnail) + '" alt="" loading="lazy" />' : '')
+                    + '<div class="news-detail-body">' + body + '</div>'
+                    + '<div class="news-detail-links">'
+                    + external
+                    + '<a class="news-link-btn news-link-secondary" href="' + esc(article.url) + '" target="_blank" rel="noopener noreferrer">Open Reddit Thread</a>'
+                    + '</div>';
+
+                renderList(articles);
+            }
+
+            function fetchNews() {
+                statusEl.textContent = 'Fetching latest stories...';
+                return fetch('https://www.reddit.com/r/gaming/new.json?limit=18', {
+                    headers: { 'Accept': 'application/json' }
+                }).then(function (res) {
+                    if (!res.ok) {
+                        throw new Error('Failed to fetch feed');
+                    }
+                    return res.json();
+                }).then(function (json) {
+                    var children = (json && json.data && json.data.children) ? json.data.children : [];
+                    var mapped = children
+                        .map(function (entry) { return mapArticle((entry && entry.data) || {}); })
+                        .filter(function (a) { return !!a.id; });
+
+                    articles = mapped;
+                    localStorage.setItem('ig_news_cache', JSON.stringify(mapped));
+
+                    if (!articles.length) {
+                        statusEl.textContent = 'No live stories were returned from the API.';
+                        renderList([]);
+                        renderDetail(null);
+                        return;
+                    }
+
+                    statusEl.textContent = 'Showing ' + articles.length + ' live stories from r/gaming.';
+                    renderList(articles);
+
+                    var selected = null;
+                    if (selectedId) {
+                        selected = articles.find(function (a) { return a.id === selectedId; }) || null;
+                    }
+                    if (!selected) {
+                        selected = articles[0];
+                    }
+                    renderDetail(selected);
+                }).catch(function () {
+                    var cached = [];
+                    try {
+                        cached = JSON.parse(localStorage.getItem('ig_news_cache') || '[]');
+                    } catch (err) {
+                        cached = [];
+                    }
+                    articles = Array.isArray(cached) ? cached : [];
+
+                    if (articles.length) {
+                        statusEl.textContent = 'Live feed unavailable right now. Showing cached stories.';
+                        renderList(articles);
+                        renderDetail(articles[0]);
+                        return;
+                    }
+
+                    statusEl.textContent = 'Unable to fetch the news feed right now. Please try again soon.';
+                    renderList([]);
+                    renderDetail(null);
+                });
+            }
+
+            listEl.addEventListener('click', function (event) {
+                var card = event.target.closest('[data-news-id]');
+                if (!card) {
+                    return;
+                }
+                var id = card.getAttribute('data-news-id');
+                var article = articles.find(function (item) { return item.id === id; });
+                if (!article) {
+                    return;
+                }
+                selectedId = id;
+                renderDetail(article);
+            });
+
+            try {
+                var raw = sessionStorage.getItem('ig_news_article');
+                if (raw) {
+                    var saved = JSON.parse(raw);
+                    if (saved && saved.id) {
+                        selectedId = String(saved.id);
+                    }
+                }
+            } catch (err) {
+                selectedId = '';
+            }
+
+            fetchNews();
+        })();
+    </script>
+</body>
+</html>

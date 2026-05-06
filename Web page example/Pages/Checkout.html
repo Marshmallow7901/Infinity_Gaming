@@ -26,6 +26,7 @@
             <li><a href="Upcoming Events.html">Upcoming Events</a></li>
             <li><a href="Checkout.html">Checkout</a></li>
             <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
         </ul>
     </nav>
 
@@ -43,6 +44,10 @@
                     <button type="button" class="action-btn" id="continue-shopping">Continue Shopping</button>
                     <button type="button" class="action-btn" id="clear-cart">Clear Cart</button>
                 </div>
+                <div class="saved-section" id="saved-section" style="display:none;">
+                    <h3>Saved for Later</h3>
+                    <div id="saved-list"></div>
+                </div>
             </article>
 
             <aside class="checkout-card">
@@ -52,8 +57,20 @@
                     <div class="summary-line"><span>Subtotal</span><span id="subtotal">R0.00</span></div>
                     <div class="summary-line"><span>VAT (15%)</span><span id="vat">R0.00</span></div>
                     <div class="summary-line"><span>Shipping</span><span id="shipping">R0.00</span></div>
+                    <div class="summary-line discount" id="discount-row" style="display:none;"><span>Discount</span><span id="discount-amount">-R0.00</span></div>
                     <div class="summary-line total"><span>Total</span><span id="grand-total">R0.00</span></div>
                 </div>
+
+                <div class="promo-row">
+                    <label for="promo-code">Promo / Coupon Code</label>
+                    <div class="promo-input-row">
+                        <input type="text" id="promo-code" placeholder="e.g. IGFIRST10" autocomplete="off" />
+                        <button type="button" id="apply-promo">Apply</button>
+                    </div>
+                    <p class="promo-msg" id="promo-msg"></p>
+                </div>
+
+                <div id="delivery-note" class="delivery-note"></div>
 
                 <form id="checkout-form" class="order-form" novalidate>
                     <div class="form-row">
@@ -70,18 +87,20 @@
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required />
                     </div>
-                    <div>
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" required />
-                    </div>
-                    <div class="form-row">
+                    <div id="shipping-fields">
                         <div>
-                            <label for="city">City</label>
-                            <input type="text" id="city" name="city" required />
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" />
                         </div>
-                        <div>
-                            <label for="postalCode">Postal Code</label>
-                            <input type="text" id="postalCode" name="postalCode" required />
+                        <div class="form-row">
+                            <div>
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" />
+                            </div>
+                            <div>
+                                <label for="postalCode">Postal Code</label>
+                                <input type="text" id="postalCode" name="postalCode" />
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -92,6 +111,10 @@
                             <option value="eft">EFT</option>
                             <option value="wallet">Digital Wallet</option>
                         </select>
+                    </div>
+                    <div>
+                        <label for="order-notes">Order Notes <span style="color:#666;font-weight:400;">(optional)</span></label>
+                        <textarea id="order-notes" name="orderNotes" placeholder="Special delivery instructions, gift messages, etc." style="min-height:70px;resize:vertical;"></textarea>
                     </div>
 
                     <button type="submit" id="place-order-btn">Place Order</button>
@@ -109,12 +132,135 @@
             var subtotalEl = document.getElementById('subtotal');
             var vatEl = document.getElementById('vat');
             var shippingEl = document.getElementById('shipping');
+            var discountRow = document.getElementById('discount-row');
+            var discountAmtEl = document.getElementById('discount-amount');
             var grandTotalEl = document.getElementById('grand-total');
             var placeOrderBtn = document.getElementById('place-order-btn');
             var clearCartBtn = document.getElementById('clear-cart');
             var continueBtn = document.getElementById('continue-shopping');
             var checkoutForm = document.getElementById('checkout-form');
             var feedback = document.getElementById('checkout-feedback');
+            var shippingFields = document.getElementById('shipping-fields');
+            var deliveryNote = document.getElementById('delivery-note');
+            var addressInput = document.getElementById('address');
+            var cityInput = document.getElementById('city');
+            var postalCodeInput = document.getElementById('postalCode');
+            var promoInput = document.getElementById('promo-code');
+            var applyPromoBtn = document.getElementById('apply-promo');
+            var promoMsg = document.getElementById('promo-msg');
+            var savedSection = document.getElementById('saved-section');
+            var savedListEl = document.getElementById('saved-list');
+
+            var appliedDiscount = 0;
+
+            // ── Promo code helpers ───────────────────────────────────
+            function getLocalPromoMap() {
+                var builtIn = {
+                    'IGFIRST10': { discount: 10, type: 'percent', label: '10% off', active: true },
+                    'IGWELCOME': { discount: 50, type: 'fixed',   label: 'R50 off', active: true },
+                    'IGGAMER20': { discount: 20, type: 'percent', label: '20% off', active: true },
+                    'IGSUMMER':  { discount: 15, type: 'percent', label: '15% Summer Sale', active: true }
+                };
+                var custom = {};
+                try { custom = JSON.parse(localStorage.getItem('igCoupons') || '{}') || {}; } catch (e) {}
+                return Object.assign({}, builtIn, custom);
+            }
+
+            function validatePromo(code, subtotal) {
+                var map = getLocalPromoMap();
+                var entry = map[String(code || '').toUpperCase().trim()];
+                if (!entry || !entry.active) { return null; }
+                var discount = entry.type === 'percent' ? subtotal * (entry.discount / 100) : Math.min(entry.discount, subtotal);
+                return { discount: Math.round(discount * 100) / 100, label: entry.label };
+            }
+
+            // ── Save for later ───────────────────────────────────────
+            function getSavedItems() {
+                try { return JSON.parse(localStorage.getItem('savedForLater') || '[]') || []; } catch (e) { return []; }
+            }
+
+            function saveSavedItems(items) {
+                localStorage.setItem('savedForLater', JSON.stringify(Array.isArray(items) ? items : []));
+            }
+
+            function renderSaved() {
+                var saved = getSavedItems();
+                if (!saved.length) {
+                    if (savedSection) { savedSection.style.display = 'none'; }
+                    return;
+                }
+                if (savedSection) { savedSection.style.display = ''; }
+                if (savedListEl) {
+                    savedListEl.innerHTML = saved.map(function (item, idx) {
+                        return '<div class="cart-item">'
+                            + '<div><div class="item-name">' + item.name + '</div><div class="item-price">R' + Number(item.price || 0).toFixed(2) + '</div></div>'
+                            + '<div class="item-actions"><button type="button" class="qty-btn" data-move-to-cart="' + idx + '">Move to Cart</button></div>'
+                            + '</div>';
+                    }).join('');
+                }
+            }
+
+            if (savedListEl) {
+                savedListEl.addEventListener('click', function (event) {
+                    var btn = event.target.closest('button[data-move-to-cart]');
+                    if (!btn) { return; }
+                    var idx = Number(btn.getAttribute('data-move-to-cart'));
+                    var saved = getSavedItems();
+                    var item = saved.splice(idx, 1)[0];
+                    if (!item) { return; }
+                    saveSavedItems(saved);
+                    var cart = getCart();
+                    var existing = cart.findIndex(function (c) { return c.name === item.name; });
+                    if (existing >= 0) {
+                        cart[existing].quantity = Number(cart[existing].quantity || 1) + 1;
+                    } else {
+                        cart.push(item);
+                    }
+                    saveCart(cart);
+                    renderCart();
+                });
+            }
+
+            function isPhysicalItem(item) {
+                var type = String(item.type || '').toLowerCase();
+                if (type === 'physical') {
+                    return true;
+                }
+                if (type === 'digital') {
+                    return false;
+                }
+
+                var name = String(item.name || '').toLowerCase();
+                var physicalHints = ['pc', 'laptop', 'desktop', 'ryzen', 'asus', 'hp omen', 'nitro', 'zephyrus', 'archangel', 'shadow gaming', 'tuf', 'defender', 'build'];
+                return physicalHints.some(function (hint) {
+                    return name.indexOf(hint) !== -1;
+                });
+            }
+
+            function cartNeedsShipping(items) {
+                return items.some(isPhysicalItem);
+            }
+
+            function updateDeliveryMode(items) {
+                var needsShipping = cartNeedsShipping(items);
+
+                addressInput.required = needsShipping;
+                cityInput.required = needsShipping;
+                postalCodeInput.required = needsShipping;
+
+                if (needsShipping) {
+                    shippingFields.style.display = '';
+                    deliveryNote.textContent = 'Physical product detected: shipping address is required.';
+                } else {
+                    shippingFields.style.display = 'none';
+                    addressInput.value = '';
+                    cityInput.value = '';
+                    postalCodeInput.value = '';
+                    deliveryNote.textContent = 'Digital products only: no shipping address required. License keys will be delivered by email.';
+                }
+
+                return needsShipping;
+            }
 
             function getCart() {
                 var raw = localStorage.getItem('cartItems');
@@ -138,26 +284,58 @@
                 return 'R' + Number(value).toFixed(2);
             }
 
+            function normalizeGameKey(name) {
+                return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            }
+
+            function createLicenseKey(name) {
+                var keyPrefix = normalizeGameKey(name).toUpperCase().slice(0, 6) || 'IGGAME';
+                var randomPart = Math.random().toString(36).toUpperCase().replace(/[^A-Z0-9]/g, '').slice(2, 10);
+                return 'IG-' + keyPrefix + '-' + randomPart;
+            }
+
+            function getInitialOrderStatus(needsShipping) {
+                return needsShipping ? 'processing' : 'licenseready';
+            }
+
+            function buildTrackingNumber(orderId) {
+                var suffix = String(orderId || '').split('-').pop() || Date.now();
+                return 'TRK-' + suffix;
+            }
+
             function updateSummary(items) {
                 var subtotal = items.reduce(function (sum, item) {
                     return sum + (Number(item.price) * Number(item.quantity || 1));
                 }, 0);
                 var vat = subtotal * 0.15;
-                var shipping = subtotal > 0 ? 120 : 0;
-                var total = subtotal + vat + shipping;
+                var needsShipping = cartNeedsShipping(items);
+                var shipping = (needsShipping && subtotal > 0) ? 120 : 0;
+                var total = Math.max(0, subtotal + vat + shipping - appliedDiscount);
 
                 subtotalEl.textContent = toCurrency(subtotal);
                 vatEl.textContent = toCurrency(vat);
                 shippingEl.textContent = toCurrency(shipping);
-                grandTotalEl.textContent = toCurrency(total);
 
+                if (discountRow && discountAmtEl) {
+                    if (appliedDiscount > 0) {
+                        discountRow.style.display = '';
+                        discountAmtEl.textContent = '-' + toCurrency(appliedDiscount);
+                    } else {
+                        discountRow.style.display = 'none';
+                    }
+                }
+
+                grandTotalEl.textContent = toCurrency(total);
                 localStorage.setItem('totalPrice', total.toFixed(2));
                 placeOrderBtn.disabled = items.length === 0;
+
+                return { subtotal: subtotal, vat: vat, shipping: shipping, discount: appliedDiscount, total: total };
             }
 
             function renderCart() {
                 var items = getCart();
                 cartList.innerHTML = '';
+                updateDeliveryMode(items);
 
                 if (!items.length) {
                     cartList.innerHTML = '<div class="empty-state">Your cart is empty.<br />Add games or PCs, then come back to checkout.</div>';
@@ -178,9 +356,12 @@
                             '<span class="qty-value">' + Number(item.quantity || 1) + '</span>' +
                             '<button type="button" class="qty-btn" data-action="increase" data-index="' + index + '">+</button>' +
                             '<button type="button" class="remove-btn" data-action="remove" data-index="' + index + '">Remove</button>' +
+                            '<button type="button" class="action-btn" data-action="save" data-index="' + index + '" style="font-size:0.7rem;padding:0.3rem 0.6rem;">Save</button>' +
                         '</div>';
                     cartList.appendChild(row);
                 });
+
+                renderSaved();
 
                 updateSummary(items);
             }
@@ -209,6 +390,12 @@
 
                 if (action === 'remove') {
                     items.splice(index, 1);
+                }
+
+                if (action === 'save') {
+                    var saved = getSavedItems();
+                    saved.push(items.splice(index, 1)[0]);
+                    saveSavedItems(saved);
                 }
 
                 saveCart(items);
@@ -240,15 +427,150 @@
                     return;
                 }
 
+                var totals = updateSummary(items);
+                var needsShipping = cartNeedsShipping(items);
+                var paymentMethod = document.getElementById('paymentMethod').value;
+                var simulatedFailure = (paymentMethod === 'wallet' && totals.total > 10000);
+                var orderId = 'IG-' + Date.now();
+                var initialStatus = getInitialOrderStatus(needsShipping);
+                var nowIso = new Date().toISOString();
+
+                if (simulatedFailure) {
+                    var failedUrl = 'Payment Failed.html?order=' + encodeURIComponent(orderId) + '&amount=' + encodeURIComponent(totals.total.toFixed(2)) + '&reason=' + encodeURIComponent('Wallet limit exceeded for this amount. Try card or EFT.');
+                    window.location.href = failedUrl;
+                    return;
+                }
+
+                var firstName = document.getElementById('firstName').value.trim();
+                var lastName = document.getElementById('lastName').value.trim();
+                var email = document.getElementById('email').value.trim();
+
+                var orderNotesEl = document.getElementById('order-notes');
+                var orderRecord = {
+                    id: orderId,
+                    createdAt: nowIso,
+                    customerName: (firstName + ' ' + lastName).trim(),
+                    customerEmail: email,
+                    paymentMethod: paymentMethod,
+                    subtotal: totals.subtotal,
+                    vat: totals.vat,
+                    shipping: totals.shipping,
+                    discount: totals.discount || 0,
+                    total: totals.total,
+                    orderNotes: orderNotesEl ? orderNotesEl.value.trim() : '',
+                    promoCode: (appliedDiscount > 0 && promoInput) ? promoInput.value.trim().toUpperCase() : '',
+                    needsShipping: needsShipping,
+                    trackingNumber: needsShipping ? buildTrackingNumber(orderId) : '',
+                    status: initialStatus,
+                    statusUpdatedAt: nowIso,
+                    statusHistory: [{ status: initialStatus, at: nowIso, note: needsShipping ? 'Order placed and queued for dispatch.' : 'Digital purchase completed and license prepared.' }],
+                    itemsCount: items.reduce(function (sum, item) { return sum + Number(item.quantity || 1); }, 0),
+                    items: items.map(function (item) {
+                        return {
+                            name: item.name,
+                            price: Number(item.price || 0),
+                            quantity: Number(item.quantity || 1),
+                            type: item.type || (isPhysicalItem(item) ? 'physical' : 'digital')
+                        };
+                    })
+                };
+
+                var orderHistory = [];
+                try {
+                    orderHistory = JSON.parse(localStorage.getItem('ordersHistory') || '[]');
+                    if (!Array.isArray(orderHistory)) {
+                        orderHistory = [];
+                    }
+                } catch (error) {
+                    orderHistory = [];
+                }
+                orderHistory.unshift(orderRecord);
+                localStorage.setItem('ordersHistory', JSON.stringify(orderHistory));
+
+                var notifications = [];
+                try {
+                    notifications = JSON.parse(localStorage.getItem('crmNotifications') || '[]');
+                    if (!Array.isArray(notifications)) {
+                        notifications = [];
+                    }
+                } catch (error) {
+                    notifications = [];
+                }
+                notifications.unshift({
+                    id: 'NTF-' + Date.now(),
+                    message: 'Order ' + orderId + ' placed. Status: ' + (needsShipping ? 'Processing' : 'License Ready') + '.',
+                    type: 'order',
+                    createdAt: nowIso,
+                    read: false
+                });
+                localStorage.setItem('crmNotifications', JSON.stringify(notifications.slice(0, 80)));
+
+                var ownedGames = {};
+                try {
+                    ownedGames = JSON.parse(localStorage.getItem('ownedGames') || '{}') || {};
+                } catch (error) {
+                    ownedGames = {};
+                }
+
+                items.forEach(function (item) {
+                    if (isPhysicalItem(item)) {
+                        return;
+                    }
+
+                    var key = normalizeGameKey(item.name);
+                    if (!key) {
+                        return;
+                    }
+
+                    if (!ownedGames[key]) {
+                        ownedGames[key] = {
+                            name: item.name,
+                            orderId: orderId,
+                            purchasedAt: new Date().toISOString(),
+                            licenseKey: createLicenseKey(item.name)
+                        };
+                    }
+                });
+                localStorage.setItem('ownedGames', JSON.stringify(ownedGames));
+
+                localStorage.setItem('currentUserProfile', JSON.stringify({
+                    name: (firstName + ' ' + lastName).trim(),
+                    email: email
+                }));
+
+                localStorage.setItem('lastOrderAmount', totals.total.toFixed(2));
+                localStorage.setItem('lastOrderId', orderId);
                 localStorage.removeItem('cartItems');
                 localStorage.removeItem('totalPrice');
-                checkoutForm.reset();
-                renderCart();
 
-                feedback.innerHTML = '<div class="success-state">Order placed successfully. Check your email for confirmation and shipping updates.</div>';
+                var successUrl = 'Payment Success.html?order=' + encodeURIComponent(orderId) + '&amount=' + encodeURIComponent(totals.total.toFixed(2));
+                window.location.href = successUrl;
             });
 
+            // Promo code apply
+            if (applyPromoBtn && promoInput) {
+                applyPromoBtn.addEventListener('click', function () {
+                    var code = promoInput.value.trim();
+                    if (!code) {
+                        if (promoMsg) { promoMsg.textContent = 'Enter a promo code first.'; promoMsg.className = 'promo-msg error'; }
+                        return;
+                    }
+                    var items = getCart();
+                    var sub = items.reduce(function (s, i) { return s + Number(i.price) * Number(i.quantity || 1); }, 0);
+                    var result = validatePromo(code, sub);
+                    if (!result) {
+                        appliedDiscount = 0;
+                        if (promoMsg) { promoMsg.textContent = 'Invalid or inactive promo code.'; promoMsg.className = 'promo-msg error'; }
+                    } else {
+                        appliedDiscount = result.discount;
+                        if (promoMsg) { promoMsg.textContent = code.toUpperCase() + ' applied: ' + result.label + ' (R' + result.discount.toFixed(2) + ' off)'; promoMsg.className = 'promo-msg success'; }
+                    }
+                    updateSummary(items);
+                });
+            }
+
             renderCart();
+            renderSaved();
         })();
     </script>
 </body>

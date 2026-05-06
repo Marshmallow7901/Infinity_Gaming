@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account - Infinity Gaming</title>
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+    <link href="../Styles/Account Admin style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+            <li><a href="Dashboard.html" id="dashboard-nav-link">Dashboard</a></li>
+            <li><a href="Account.html" id="account-nav-link">Account</a></li>
+            <li><a href="Admin.html" id="admin-nav-link">Admin</a></li>
+        </ul>
+    </nav>
+
+    <main class="account-wrap" id="account-root">
+        <section class="acc-hero">
+            <h1>Account & CRM</h1>
+            <p>Manage your player profile, loyalty points, support requests, and communication updates.</p>
+        </section>
+
+        <section class="acc-grid">
+            <article class="acc-card">
+                <h2>Profile Settings</h2>
+                <form id="account-form" class="acc-form" novalidate>
+                    <label for="acc-name">Display Name</label>
+                    <input id="acc-name" type="text" required />
+
+                    <label for="acc-email">Email</label>
+                    <input id="acc-email" type="email" required />
+
+                    <label for="acc-gamertag">Gamertag</label>
+                    <input id="acc-gamertag" type="text" />
+
+                    <button type="submit">Save Account</button>
+                </form>
+                <p class="acc-loyalty">Loyalty Points: <strong id="loyalty-points">0</strong></p>
+            </article>
+
+            <article class="acc-card">
+                <h2>CRM Notifications</h2>
+                <div id="account-notifications"></div>
+            </article>
+
+            <article class="acc-card acc-wide">
+                <h2>Support Tickets</h2>
+                <form id="ticket-form" class="acc-form" novalidate>
+                    <label for="ticket-subject">Subject</label>
+                    <input id="ticket-subject" type="text" maxlength="80" required />
+
+                    <label for="ticket-message">Message</label>
+                    <textarea id="ticket-message" maxlength="350" required></textarea>
+
+                    <button type="submit">Submit Ticket</button>
+                </form>
+                <div id="ticket-list" class="acc-list"></div>
+            </article>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+</body>
+</html>

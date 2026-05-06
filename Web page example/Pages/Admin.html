@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Infinity Gaming</title>
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+    <link href="../Styles/Account Admin style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+            <li><a href="Dashboard.html" id="dashboard-nav-link">Dashboard</a></li>
+            <li><a href="Account.html" id="account-nav-link">Account</a></li>
+        </ul>
+    </nav>
+
+    <main class="admin-wrap" id="admin-root">
+        <section class="acc-hero">
+            <h1>Marketplace Admin</h1>
+            <p>Manage order fulfillment, moderate reviews, and answer product questions.</p>
+        </section>
+
+        <div id="admin-gate" class="admin-gate">
+            <h2>Restricted Access</h2>
+            <p>Admin access is restricted. Use the Admin button in the site footer to authenticate.</p>
+        </div>
+
+        <section id="admin-panel" class="acc-grid" style="display:none;">
+            <article class="acc-card acc-wide">
+                <h2>Store Analytics</h2>
+                <div id="admin-analytics" class="acc-list"></div>
+            </article>
+
+            <article class="acc-card">
+                <div class="admin-title-row">
+                    <h2>Orders</h2>
+                    <button type="button" id="admin-signout">Sign Out</button>
+                </div>
+                <div id="admin-orders" class="acc-list"></div>
+            </article>
+
+            <article class="acc-card">
+                <h2>Reviews Moderation</h2>
+                <div id="admin-reviews" class="acc-list"></div>
+            </article>
+
+            <article class="acc-card acc-wide">
+                <h2>Q&A Responses</h2>
+                <div id="admin-qa" class="acc-list"></div>
+            </article>
+
+            <article class="acc-card acc-wide">
+                <h2>Coupon Manager</h2>
+                <form id="admin-coupon-form" class="coupon-form" novalidate>
+                    <div>
+                        <label for="coupon-code-input">Code</label>
+                        <input type="text" id="coupon-code-input" placeholder="MYNEWCODE" maxlength="20" required />
+                    </div>
+                    <div>
+                        <label for="coupon-amount-input">Amount</label>
+                        <input type="number" id="coupon-amount-input" min="1" max="100" placeholder="10" required />
+                    </div>
+                    <div>
+                        <label for="coupon-type-select">Type</label>
+                        <select id="coupon-type-select">
+                            <option value="percent">Percent %</option>
+                            <option value="fixed">Fixed R</option>
+                        </select>
+                    </div>
+                    <button type="submit">Add Coupon</button>
+                </form>
+                <div id="admin-coupons-list" class="acc-list"></div>
+            </article>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+</body>
+</html>

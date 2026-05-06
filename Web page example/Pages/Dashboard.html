@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Infinity Gaming</title>
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+    <link href="../Styles/Dashboard style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+            <li><a href="Dashboard.html" id="dashboard-nav-link">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <main class="dash-wrap" id="dashboard-root">
+        <header class="dash-hero">
+            <h1 id="dash-welcome">Welcome, Gamer</h1>
+            <p id="dash-jwt-meta">Sign in to initialize a JWT session for your dashboard.</p>
+            <button type="button" id="dashboard-logout" class="dash-btn ghost">Sign Out</button>
+        </header>
+
+        <section id="dashboard-auth-gate" class="dash-auth">
+            <h2>Sign In To Continue</h2>
+            <p>This creates a frontend JWT session for this demo site.</p>
+            <form id="dashboard-auth-form" class="dash-auth-form" novalidate>
+                <label for="dash-name">Display Name</label>
+                <input id="dash-name" type="text" placeholder="Infinity Gamer" required />
+
+                <label for="dash-email">Email</label>
+                <input id="dash-email" type="email" placeholder="gamer@example.com" required />
+
+                <button type="submit" class="dash-btn">Create Session</button>
+            </form>
+        </section>
+
+        <section id="dashboard-app" class="dash-grid" style="display:none;">
+            <article class="dash-card">
+                <h3>Order History</h3>
+                <div id="dash-orders"></div>
+            </article>
+
+            <article class="dash-card">
+                <h3>Games Owned</h3>
+                <div id="dash-owned-games"></div>
+            </article>
+
+            <article class="dash-card dash-card-wide">
+                <h3>Subscription Management</h3>
+                <div id="dash-subscription"></div>
+            </article>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+</body>
+</html>

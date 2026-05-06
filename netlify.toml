@@ -1,0 +1,12 @@
+[build]
+  publish = "Web page example"
+
+[[redirects]]
+  from = "/"
+  to = "/Pages/Home%20Page.html"
+  status = 302
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

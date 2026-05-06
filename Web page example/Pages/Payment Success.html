@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Successful - Infinity Gaming</title>
+    <link href="../Styles/Payment status style.css" rel="stylesheet" />
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+        </ul>
+    </nav>
+
+    <main class="status-wrap">
+        <section class="status-card success">
+            <div class="status-icon">✓</div>
+            <h1 class="status-title">Payment Successful</h1>
+            <p class="status-text">Your order has been confirmed. A receipt and order confirmation email is on its way.</p>
+
+            <div class="order-meta">
+                <p><span>Order ID</span><strong id="order-id">-</strong></p>
+                <p><span>Amount Paid</span><strong id="order-amount">-</strong></p>
+            </div>
+
+            <div class="status-actions">
+                <a href="Games.html" class="primary">Continue Shopping</a>
+                <a href="Checkout.html" class="secondary">Back To Checkout</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../Scripts/script.js"></script>
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var orderId = params.get('order') || localStorage.getItem('lastOrderId') || 'N/A';
+            var amount = params.get('amount') || localStorage.getItem('lastOrderAmount') || '0.00';
+
+            document.getElementById('order-id').textContent = orderId;
+            document.getElementById('order-amount').textContent = 'R' + Number(amount).toFixed(2);
+        })();
+    </script>
+</body>
+</html>

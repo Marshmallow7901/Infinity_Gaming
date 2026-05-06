@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at 18% 15%, rgba(255, 215, 0, 0.11), transparent 35%), radial-gradient(circle at 82% 82%, rgba(255, 117, 24, 0.09), transparent 33%), #08090f;
+    color: #eef0ff;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.dash-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.1rem 3rem;
+}
+
+.dash-hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem 1.1rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.32);
+    margin-bottom: 1.2rem;
+}
+
+.dash-hero h1 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    color: #ffd700;
+}
+
+.dash-hero p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aab0cf;
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.dash-card {
+    border: 1px solid rgba(255, 215, 0, 0.18);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.dash-card-wide {
+    grid-column: 1 / -1;
+}
+
+.dash-card h3 {
+    margin: 0 0 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: #ffd700;
+}
+
+.dash-item {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(6, 9, 20, 0.66);
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-bottom: 0.7rem;
+}
+
+.dash-item h4 {
+    margin: 0 0 0.45rem;
+    color: #f7f8ff;
+    font-size: 0.95rem;
+}
+
+.dash-item p {
+    margin: 0.25rem 0;
+    color: #b8bddd;
+    font-size: 0.83rem;
+}
+
+.dash-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.dash-status-processing,
+.dash-status-packed {
+    background: rgba(234, 179, 8, 0.14);
+    border-color: rgba(234, 179, 8, 0.45);
+    color: #fde68a;
+}
+
+.dash-status-shipped,
+.dash-status-intransit {
+    background: rgba(14, 165, 233, 0.16);
+    border-color: rgba(14, 165, 233, 0.45);
+    color: #bae6fd;
+}
+
+.dash-status-delivered,
+.dash-status-completed,
+.dash-status-licenseready {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.45);
+    color: #bbf7d0;
+}
+
+.dash-license span {
+    color: #ffd700;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.dash-copy,
+.dash-btn,
+.dash-actions button {
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    background: linear-gradient(135deg, #ffd700, #ffad1f);
+    color: #10121d;
+    border-radius: 8px;
+    padding: 0.55rem 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-copy:hover,
+.dash-btn:hover,
+.dash-actions button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.25);
+}
+
+.dash-btn.ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: #f0f2ff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dash-empty {
+    margin: 0;
+    color: #9ca3c7;
+    font-size: 0.85rem;
+}
+
+.dash-auth {
+    max-width: 520px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem;
+}
+
+.dash-auth h2 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffd700;
+    font-size: 1rem;
+}
+
+.dash-auth p {
+    margin: 0.35rem 0 0.9rem;
+    color: #b1b7d8;
+    font-size: 0.84rem;
+}
+
+.dash-auth-form {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.dash-auth-form label {
+    font-size: 0.78rem;
+    color: #bbc0dc;
+}
+
+.dash-auth-form input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.25);
+    color: #f0f2ff;
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+.dash-actions {
+    margin-top: 0.55rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+@media (max-width: 860px) {
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
+}

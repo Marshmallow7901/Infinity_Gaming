@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Infinity Gaming</title>
+    <link href="Styles/navbar style.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #0a0a0f;
+            color: #f0f0f8;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .error-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .error-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.5));
+            animation: pulse-logo 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-logo {
+            0%, 100% { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.4)); }
+            50%       { filter: drop-shadow(0 0 34px rgba(255, 215, 0, 0.75)); }
+        }
+
+        .error-code {
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+            font-size: clamp(5rem, 16vw, 9rem);
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffd700 0%, #ffae00 60%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .error-title {
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+            font-size: clamp(1.1rem, 3vw, 1.7rem);
+            font-weight: 700;
+            color: #f0f0f8;
+            letter-spacing: 0.05em;
+        }
+
+        .error-msg {
+            color: #9090a8;
+            font-size: 1rem;
+            max-width: 400px;
+            line-height: 1.65;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.7rem 1.6rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700, #ffae00);
+            color: #0a0a0f;
+            box-shadow: 0 4px 18px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(255, 215, 0, 0.45);
+            background: linear-gradient(135deg, #ffe033, #ffbc00);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #f0f0f8;
+            border: 1px solid rgba(255, 215, 0, 0.22);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .glitch-line {
+            width: 160px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" height="80" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Pages/Home Page.html">Home</a></li>
+            <li><a href="Pages/About us.html">About Us</a></li>
+            <li><a href="Pages/Games.html">Games</a></li>
+            <li><a href="Pages/Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Pages/Contact us.html">Contact Us</a></li>
+            <li><a href="Pages/Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Pages/Checkout.html">Checkout</a></li>
+            <li><a href="Pages/Subscription.html">Subscribe</a></li>
+            <li><a href="Pages/Wishlist.html">Wishlist</a></li>
+        </ul>
+    </nav>
+
+    <main class="error-wrap">
+        <img src="pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming" class="error-logo" />
+
+        <div class="glitch-line"></div>
+
+        <div class="error-code">404</div>
+
+        <h1 class="error-title">Page Not Found</h1>
+
+        <p class="error-msg">Looks like this page respawned somewhere else. The level you're looking for doesn't exist — but the rest of the game does.</p>
+
+        <div class="error-actions">
+            <a href="Pages/Home Page.html" class="btn btn-primary">&#127968; Go Home</a>
+            <a href="Pages/Games.html" class="btn btn-secondary">&#127918; Browse Games</a>
+            <a href="Pages/Gaming pcs.html" class="btn btn-secondary">&#128187; Gaming PCs</a>
+        </div>
+    </main>
+
+    <script src="Scripts/script.js"></script>
+</body>
+</html>
