@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Gaming</title>
+    <link href="../Styles/Home Page style.css" rel="stylesheet" />
+    <link href="../Styles/navbar style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../pics/Web Images/Pictures/Background and Logo Images/Logo with no background.png" alt="Infinity Gaming Logo" height="80" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="Home Page.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Gaming pcs.html">Gaming Pcs</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><a href="Upcoming Events.html">Upcoming Events</a></li>
+            <li><a href="Checkout.html">Checkout</a></li>
+            <li><a href="Subscription.html">Subscribe</a></li>
+            <li><a href="Wishlist.html" id="wishlist-nav-link">Wishlist</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Play Beyond Limits</div>
+            <h1 class="hero-title">INFINITY<span>GAMING</span></h1>
+            <p class="hero-sub">Your ultimate destination for top-tier gaming PCs, the latest titles, and epic events. Level up your setup today.</p>
+            <div class="hero-actions">
+                <a href="Games.html" class="btn btn-primary">Shop Games</a>
+                <a href="Gaming pcs.html" class="btn btn-secondary">Browse PCs</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">100+</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">20+</span>
+                    <span class="stat-label">Gaming PCs</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">10K+</span>
+                    <span class="stat-label">Gamers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="api-feed">
+        <div class="feed-head">
+            <h2>Live Gaming Feed</h2>
+            <p>Powered by public APIs to surface fresh games and trending gaming news.</p>
+        </div>
+        <div class="feed-grid">
+            <article class="feed-card">
+                <h3>New PC Games</h3>
+                <div id="new-games-feed"></div>
+            </article>
+            <article class="feed-card">
+                <h3>Gaming News</h3>
+                <div id="gaming-news-feed"></div>
+            </article>
+        </div>
+    </section>
+
+    <script src="../Scripts/script.js"></script>
+</body>
+</html>
